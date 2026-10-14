@@ -1,0 +1,36 @@
+.tabs{flex-wrap:wrap}
+.u-time{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.u-time input{flex:1;min-width:0;accent-color:#0f766e}
+.u-time b{min-width:60px;text-align:right}
+.u-play{min-width:72px;background:#0f766e;color:#fff;border:1px solid #0f766e;border-radius:8px;padding:7px 12px;cursor:pointer;font-weight:600}
+.u-hot{color:#d9482b}
+.u-check{display:flex;align-items:center;gap:6px;font-size:13px;margin-top:10px}
+.u-list{margin:0;padding-left:18px;font-size:13px}
+.u-list li{margin-bottom:6px}
+.u-note{margin-top:10px;font-size:12px;opacity:.7;border-left:3px solid #d9482b;padding-left:8px}
+.u-map{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));grid-template-rows:repeat(8,auto);gap:4px}
+.u-tile{aspect-ratio:1;padding:2px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1;border-radius:6px;border:2px solid transparent;font-size:12px;cursor:pointer}
+.u-tile b{font-weight:600}
+.u-tile span{font-size:10px}
+.u-tile.sel{border-color:#d9482b}
+.u-leg{display:flex;align-items:center;gap:8px;font-size:11px;margin-top:10px}
+.u-leg i{flex:1;height:8px;border-radius:4px;background:linear-gradient(90deg,#fff,#0f766e);border:1px solid #ccc}
+.u-rk{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:8px}
+.u-rk span:first-child{width:120px}
+.u-rk i{display:block;height:10px;border-radius:3px;background:#d9482b}
+.u-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.u-chip{font-size:12px;padding:5px 10px;display:flex;align-items:center;gap:6px;border:1px solid #ddd;border-radius:8px;background:transparent;cursor:pointer;color:inherit}
+.u-chip.on{border-color:#0f766e;background:#dff1ee;color:#14201f}
+.u-chip s{display:inline-block;width:9px;height:9px;border-radius:2px}
+.u-rr{display:flex;align-items:center;gap:8px;font-size:12px;margin-bottom:6px}
+.u-rr>span:first-child{width:120px;flex:none}
+.u-bg{flex:1;height:8px;border-radius:3px;background:#e2e0d8}
+.u-bg i{display:block;height:8px;border-radius:3px}
+.u-rr em{font-style:normal;font-size:11px;padding:2px 8px;border-radius:99px;border:1px solid #ddd}
+.u-ask{display:flex;gap:8px;margin-bottom:12px}
+.u-ask input{flex:1;min-width:0;font:inherit;padding:8px 10px;border:1px solid #ddd;border-radius:8px}
+pre{background:#f4f3ee;color:#14201f;border-radius:8px;padding:8px;font-size:12px;overflow-x:auto}
+
+
+.u-list b,.u-rr b,.u-check b,.u-note b,.sub b{display:inline;font-size:inherit;font-family:inherit;font-weight:600}
+.u-time b{font-size:18px}

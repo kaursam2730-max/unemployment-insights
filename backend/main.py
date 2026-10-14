@@ -59,3 +59,13 @@ def states(area: Optional[str] = None):
 @app.get("/plfs")
 def plfs():
     return rows(pd.read_csv("data/plfs_monthly.csv"))
+
+@app.get("/monthly")
+def monthly(area: Optional[str] = None):
+    w, p = where(None, area)
+
+    df = run("SELECT region, substr(date,1,7) AS month, "
+             "ROUND(AVG(unemployment_rate),2) AS rate, "
+             "ROUND(AVG(labour_participation),2) AS lfpr "
+             "FROM unemployment" + w + " GROUP BY region, month ORDER BY month", p)
+    return rows(df)
