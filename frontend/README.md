@@ -1,16 +1,76 @@
-# React + Vite
+# India Unemployment Insights
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+An interactive analytics dashboard on unemployment in India. It covers the 2020 lockdown shock (CMIE data, May 2019 to Jun 2020) and the current labour market (PLFS monthly bulletins, 2025-26).
 
-Currently, two official plugins are available:
+**Live demo:** https://unemployment-insights.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Dashboard:** KPI cards, trend chart and auto-generated insights for any state
+- **Time slider with Play:** watch the lockdown spike unfold month by month
+- **India map:** tile map coloured by unemployment rate, click a state to drill down
+- **Compare:** up to 4 states on one chart
+- **Insights:** resilience score per state and early warning flags for sudden jumps
+- **Ask data:** plain-English questions with the SQL shown
+- **Shock simulator:** change lockdown length and government support, see the projected path
+- **Forecast toggle:** 6-month illustrative projection
+- **India now:** latest PLFS figures (overall, urban, rural, participation)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech stack
 
-## Expanding the Oxlint configuration
+| Layer | Tools |
+|-------|-------|
+| Frontend | React, Vite, Recharts |
+| Backend | FastAPI, SQLAlchemy, pandas |
+| Database | SQLite |
+| Deployment | Vercel (frontend), Render (backend) |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Project structure
+
+```
+backend/    FastAPI app, data cleaning scripts, SQLite database
+frontend/   React dashboard
+```
+
+## Run locally
+
+Backend:
+```
+cd backend
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+
+Frontend (new terminal):
+```
+cd frontend
+npm install
+npm run dev
+```
+
+Open http://localhost:5173
+
+## API endpoints
+
+| Endpoint | Description |
+|----------|-------------|
+| `/regions` | List of states |
+| `/kpis` | Average, peak and participation (optional `region`, `area`) |
+| `/trends` | Monthly rate (optional `region`, `area`) |
+| `/states` | Average rate by state |
+| `/monthly` | Monthly rate and participation for every state |
+| `/plfs` | PLFS monthly bulletin data |
+
+## Data sources
+
+- CMIE unemployment data, 2019-20 (Kaggle)
+- PLFS monthly bulletins, MoSPI, 2025-26
+
+CMIE and PLFS use different survey methods, so the two datasets are not directly comparable.
+
+## Notes
+
+- The forecast and simulator are exploratory models, not official predictions.
+- The backend runs on a free Render plan and sleeps when idle, so the first load can take up to a minute.
